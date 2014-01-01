@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+    Document   : index
+    Created on : 14-jun-2011, 20:26:26
+    Author     : Juan Sebastián Urrego E.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/main-template.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ace="http://www.icefaces.org/icefaces/components"
+                xmlns:ice="http://www.icesoft.com/icefaces/component"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:param name="titulo" value="Monitoreo y Control" />
+    <ui:define name="body">
+        <h:form>
+            <ice:panelGroup>
+                <f:facet name="header" >
+                    Monitoreo y control
+                </f:facet>
+                <ice:panelGrid width="100px" columns="1" columnClasses="pnlGrdClass, pnlGrdClass, pnlGrdClassLong">
+                    <ace:gMap address="Parque El Virrey, Bogotá, Colombia." zoomLevel="13" style="height:500px; width:800px;">
+                        <ace:gMapMarker id="marker1" latitude="#{monitoreoBean.latA}" longitude="#{monitoreoBean.longA}" />
+                        
+                    </ace:gMap>
+                    <h:commandButton value="Intercambio Publica" action="#{monitoreoBean.publica}"/>
+                    <h:commandButton value="Monitorear posición" action="#{monitoreoBean.actualizarPos}"/>
+                    <h:commandButton value="Monitorear emergencia" action="#{monitoreoBean.emergencia}"/>
+                    <h:commandButton value="Conductor mas eficiente " action="#{monitoreoBean.conmasefi}"/>
+                    <h:commandButton value="Conductor menos eficiente" action="#{monitoreoBean.conmenefi}"/>
+                    <h:commandButton value="Accidente mas comun" action="#{monitoreoBean.accmascom}"/>
+                    <h:commandButton value="Trayectos Problematicos" action="#{monitoreoBean.trypro}"/>
+                    <h:commandButton value="Tiempos promedio" action="#{monitoreoBean.tmppro}"/>
+                    <h:commandButton value="Referencias" action="#{monitoreoBean.referencias}"/>
+                </ice:panelGrid>
+            </ice:panelGroup>
+        </h:form>
+    </ui:define>
+</ui:composition>
